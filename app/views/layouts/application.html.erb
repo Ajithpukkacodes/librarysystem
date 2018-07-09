@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Librarysystem</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+     <div> 
+    
+  <% if current_user %> 
+  <%= current_user.name%>
+  <%= current_user.id%>  
+    Logged in as <%= current_user.email %>.  
+    <%= link_to("Log Out", logout_path, method: :delete)%>  
+  <% else %>  
+    <%= link_to "Sign Up", new_user_path %> or  
+    <%= link_to "Log In", loginpage_path %>  
+  <% end %>  
+</div>  
+    <%= yield %>
+    <% if flash[:notice]  %>
+       <p><%= flash[:notice] %></p>
+    <% end %>
+  </body>
+</html>

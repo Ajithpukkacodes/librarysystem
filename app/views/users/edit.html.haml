@@ -1,0 +1,37 @@
+%p edit user
+= form_with model: @user,local: true   do |f|
+  - if @user.errors.any?
+  #error_explanation
+  %h2
+    = pluralize(@user.errors.count, "error")
+    prohibited this user from being saved:
+  %ul
+    %li
+      - @user.errors.full_messages.each do|er|
+      = er
+  %div
+    = f.label :name
+    %br/
+    = f.text_field :name, placeholder: "edit user name"
+  %div
+    = f.label :email
+    %br/
+    = f.text_field :email, placeholder: "edit Email"
+  %div
+    = f.label :password
+    %br/
+    = f.password_field :password, placeholder: "reset password"
+  %div
+    = f.label :password_confirmation 
+    %br/
+    = f.password_field :password_confirmation, placeholder: "retype password"
+  %div
+    = f.label :address
+    %br/
+    = f.text_field :address, placeholder: "edit address"
+  %div
+    = f.label :phone
+    %br/
+    = f.text_field :phone, placeholder: "edit Phone Number"
+  .actions
+    = f.submit :class => 'btn btn-primary'
