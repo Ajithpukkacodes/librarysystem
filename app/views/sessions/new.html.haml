@@ -1,13 +1,16 @@
-%p login page 
-= form_with url: sessions_path,local: true   do |f|
-
-      = f.label :email
-      = f.email_field :email
-      %br/
-
-      = f.label :password 
-      = f.password_field :password
-      %br/
-
-      = f.submit "Log in"
-      = link_to 'signup',new_user_path
+.container
+  .row
+    .col-md-12
+      .wrap
+        %p.form-title login
+        = form_with url: sessions_path,local: true, class: "login" do |f|
+          = f.label :email
+          = f.email_field :email
+          %br/
+          = f.label :password 
+          = f.password_field :password
+          %br/
+          = f.submit "Log in",class: "btn btn-success btn-sm"
+          %br/
+          %br/
+          %p= "Not-yet registered? #{link_to 'signup',new_user_path}".html_safe

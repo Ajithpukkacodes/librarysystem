@@ -1,0 +1,29 @@
+= form_for(@book) do |f|
+  - if @book.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@book.errors.count, "error")
+        prohibited this book from being saved:
+      %ul
+        - @book.errors.full_messages.each do |er|
+          %li= er
+  %div
+    = f.label :title
+    %br/
+    = f.text_field :title
+  %div
+    = f.label :s_no
+    %br/
+    = f.text_field :s_no
+  %div
+    = f.label :author
+    %br/
+    = f.text_field :author_name
+  %div
+    = f.label :description
+    %br/
+    = f.text_field :description
+  %div
+    = f.submit
+  = link_to "back",viewpage_path
+  =@book   

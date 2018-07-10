@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-def current_user   
+  include SessionsHelper
+  def current_user   
     User.where(id: session[:user_id]).first   
   end   
-  helper_method :current_user
+    helper_method :current_user
 end

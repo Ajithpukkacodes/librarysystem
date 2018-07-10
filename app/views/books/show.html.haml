@@ -1,0 +1,19 @@
+%table
+  %thead
+    %tr
+      %th
+        %strong Title
+      %th
+        %strong Description
+      %th
+        %strong Author
+      %th
+        %strong s_no
+  %tbody
+    %tr
+      %td= @book.title
+      %td= @book.description
+      %td= @book.author_name
+      %td= @book.s_no
+  = link_to 'Edit', edit_book_path(@book)
+= link_to 'Back', books_path

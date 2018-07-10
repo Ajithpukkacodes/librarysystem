@@ -7,24 +7,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag href ='https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag href ="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
   </head>
 
   <body>
      <div> 
-    
-  <% if current_user %> 
-  <%= current_user.name%>
-  <%= current_user.id%>  
-    Logged in as <%= current_user.email %>.  
-    <%= link_to("Log Out", logout_path, method: :delete)%>  
-  <% else %>  
-    <%= link_to "Sign Up", new_user_path %> or  
-    <%= link_to "Log In", loginpage_path %>  
-  <% end %>  
-</div>  
+        <% if current_user %> 
+          <%= current_user.name%>
+          <%= current_user.id%>  
+          Logged in as <%= current_user.email %>.  
+          <%= link_to("Log Out", logout_path, method: :delete)%>  
+        <% else %>  
+        <% end %>  
+     </div>  
     <%= yield %>
-    <% if flash[:notice]  %>
-       <p><%= flash[:notice] %></p>
-    <% end %>
+  <% if flash[:notice]  %>
+     <p><%= flash[:notice] %></p>
+  <% end %>
   </body>
 </html>

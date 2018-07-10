@@ -1,0 +1,47 @@
+%p hi
+%p All Books
+%table
+  %thead
+    %tr
+      %th s_no
+      %th Title
+      %th Description
+      %th Author
+      %th Status
+  - @books.each do |book|
+    %tbody
+      %tr
+        %td= book.s_no
+        %td= book.title
+        %td= book.description
+        %td= book.author_name
+        -if book.is_borrowed
+          %td
+            %span Checked out
+        - else
+          %td
+            %span Available
+        - if book.is_borrowed && current_user.admin?
+          - @user = User.find(book.user_id)
+          %td
+            = @user.name
+            (#{@user.email})
+        - else
+          %td          
+        - if !book.is_borrowed && current_user.admin?
+          %td= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' }
+        - else
+          %td  
+        %td= link_to 'Show', book
+        - if !book.is_borrowed
+          %td= link_to 'Check out', borrow_book_path(:id => book.id)      
+        - else
+        - if book.is_borrowed
+          - if book.user_id == current_user.id
+            %td= link_to 'Return', return_book_path(:id => book.id)
+        - if current_user&&current_user.admin?
+          %td= link_to 'Edit', edit_book_path(book)
+        -else
+- if current_user.admin?
+  = link_to 'Add Book', new_book_path
+= link_to "home", viewpage_path

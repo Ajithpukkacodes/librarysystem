@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-has_secure_password
-validates :name, presence: true   
+  enum is_admin: [:user,:admin]
+  has_many :books	
+  has_secure_password
+  validates :name, presence: true   
   validates :email, presence: true,  
             uniqueness: true,  
             format: {  

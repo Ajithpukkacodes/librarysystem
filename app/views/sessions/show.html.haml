@@ -1,1 +1,7 @@
 %p "hi"
+-if current_user.admin?
+  = link_to "create user",new_user_path
+  = link_to "create books",new_book_path
+  = link_to "list all user",users_path
+= link_to "back",viewpage_path
+= link_to "list all books",books_path
